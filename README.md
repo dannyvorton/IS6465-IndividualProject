@@ -44,3 +44,5 @@ Rubric
 - Add authorization (role access) to the application: 5 pts
 - Redeem for gift cards: (5 PTS EXTRA CREDIT)
 - Total Points: 25
+
+Good Luck!
