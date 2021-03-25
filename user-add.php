@@ -22,7 +22,7 @@ if(isset($_POST['userId'])) {
 echo <<<_END
 <div>Thank you for registering!</div>
 <br>
-<a href="/airasia/login.php">
+<a href="login.php">
     <button type="button">Sign In</button>
 </a>
 _END;

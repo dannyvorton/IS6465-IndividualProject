@@ -22,14 +22,14 @@ echo <<<_END
                 </p>
                 <p class="submit">
                     <input type="submit" name="commit" value="login">
-<!--                    <a href="/airasia/card-list.php">Submit</a> -->
+<!--                    <a href="card-list.php">Submit</a> -->
                 </p>
             </form>
         </div>
         <div class="login_help">
             <p>
                 New User?
-                <a href="/airasia/user.php">Click Here to Register</a>
+                <a href="user.php">Click Here to Register</a>
             </p>
         </div>
     </body>
