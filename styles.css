@@ -1,0 +1,11 @@
+body {
+    background-color: white;
+}
+
+.right {
+    position: absolute;
+    right: 10px;
+    width: 200px;
+    border: 1px solid lightblue;
+    padding: 5px;
+}
