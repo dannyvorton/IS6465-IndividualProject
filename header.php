@@ -12,7 +12,7 @@
     </head>
     <body>
         <header>
-            <a href="index.php"><img src="/images/AirAsiaLogo.png" alt="Air Asia" width="300" height="100"></a>
+            <a href="index.php"><img src="images/AirAsiaLogo.png" alt="Air Asia" width="300" height="100"></a>
             <div class="navigation" id="navigation">
                 <nav>
                     <ul id="hnav">
