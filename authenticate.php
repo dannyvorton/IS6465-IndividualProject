@@ -33,16 +33,17 @@ if(isset($_POST['userName']) && isset($_POST['password'])) {
         $user = new User($tmp_username);
         if($role == "admin") {
             session_start();
-            $_SESSION['admin'] = $user;
-            header("Location: card-list-user.php");
+            $_SESSION['user'] = $user;
+            header("Location: card-list-admin.php");
         } elseif($role == "user") {
             session_start();
             $_SESSION['user'] = $user;
-            header("Location: card-list-admin.php");
+            header("Location: card-list-user.php");
         } else {
             echo "login error<br>";
         }
     }
+}
     $conn->close();
 
 // sanitization functions
