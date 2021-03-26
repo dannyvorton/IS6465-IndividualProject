@@ -22,7 +22,7 @@ echo <<<_END
                 </p>
                 <p class="submit">
                     <input type="submit" name="commit" value="login">
-<!--                    <a href="card-list.php">Submit</a> -->
+
                 </p>
             </form>
         </div>
@@ -62,25 +62,7 @@ if(isset($_POST['userName']) && isset($_POST['password'])) {
     // compare passwords
     if(password_verify($tmp_password, $passwordFromDB)) {
         echo "successful login<br>";
-        
-        $conn = new mysqli ($hn, $un, $pw, $db);
-        if($conn->connect_error) die($conn->connect_error);
-
- //       if (isset($_GET['cardId'])) {
-
-//        $cardId = $_GET['cardId'];
-
-        $query = "select role from users where userName=$tmp_username";
-
-        $result = $conn->query($query);
-        if(!$result) die ($conn->error);
-
-        $rows = $result->num_rows;
-
-        $row = $result->fetch_array(MYSQLI_ASSOC);
-        $role = $row['role'];
         session_start();
-        $_SESSION['role'] = $role;
         $_SESSION['userName'] = $tmp_username;
         echo "<a href='continue.php'> Continue </a>";
     } else {

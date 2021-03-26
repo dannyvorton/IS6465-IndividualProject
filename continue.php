@@ -2,8 +2,8 @@
 
 session_start();
 
-if($_SESSION['username']) {
-    $username = $_SESSION['username'];
+if($_SESSION['userName']) {
+    $username = $_SESSION['userName'];
 
     destroy_session_and_data();
 

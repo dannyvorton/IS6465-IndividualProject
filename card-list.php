@@ -1,5 +1,5 @@
 <?php
-session_start();
+
 include 'header.php';
 include 'account-navbar.php';
 include 'database.php';
@@ -26,20 +26,14 @@ echo <<<_END
     Points: $row[points]
 </pre>
 
-_END;
-
-if($_SESSION['userName'] == 'fsinatra'){
-    echo <<<_END
-    <form action='card-delete.php' method='post'>
+<form action='card-delete.php' method='post'>
     <input type='hidden' name='delete' value='yes'>
     <input type='hidden' name='cardId' value=$row[cardId]>
     <input type='hidden' name='cardName' value='$row[cardName]'>
     <input type='submit' value='DELETE RECORD'>
 </form>
+
 _END;
-
-    }
-
 
 }
 

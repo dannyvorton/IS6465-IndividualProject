@@ -5,7 +5,8 @@ create table users (
     email varchar(100) not null,
     userName varchar(100) unique not null,
     password varchar(100) not null,
-    role varchar(100) not null
+    role varchar(100) not null,
+    points int
 )
 ENGINE MyISAM;
 
