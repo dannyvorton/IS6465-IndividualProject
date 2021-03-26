@@ -11,7 +11,7 @@ if (isset($_GET['cardId'])) {
 
 $cardId = $_GET['cardId'];
 
-$query = "SELECT * from giftcard where cardId=$cardId";
+$query = "select * from giftcard where cardId=$cardId";
 
 $result = $conn->query($query);
 if(!$result) die ($conn->error);

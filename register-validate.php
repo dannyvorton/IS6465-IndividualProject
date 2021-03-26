@@ -1,10 +1,10 @@
 <?php
 
 if (isset($_POST['username'])) {
-    $firstname = fix_string($_POST['firstname']);
-    $lastname = fix_string($_POST['lastname']);
+    $firstname = fix_string($_POST['firstName']);
+    $lastname = fix_string($_POST['lastName']);
     $email = fix_string($_POST['email']);
-    $username = fix_string($_POST['username']);
+    $username = fix_string($_POST['userName']);
     $password1 = fix_string($_POST['password1']);
     $password2 = fix_string($_POST['password2']);
     $role = fix_string($_POST['role']);

@@ -10,7 +10,7 @@ if($conn->connect_error) die($conn->connect_error);
 if (isset($_POST['delete'])) {
     
     $cardId = $_POST['cardId'];
-    $query = "DELETE from giftcard where cardId='$cardId'";
+    $query = "delete from giftcard where cardId='$cardId'";
 
     $result = $conn->query($query);
     if(!$result) die ($conn->error);

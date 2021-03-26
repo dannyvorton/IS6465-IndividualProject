@@ -8,14 +8,14 @@ include 'header.php'
 <html> 
 	<head>
 		<title>An Example Form</title>
-        <script type='text/javascript' src='user-validate.js'></script>
+        <script type='text/javascript' src='register-validate.js'></script>
         <script>
             function validate(form) {
                 var 
 				fail = validateFirstName(form.firstName.value)
 				fail += validateLastName(form.lastName.value)
 				fail += validateEmail(form.email.value)
-				fail += validateUsername(form.username.value)
+				fail += validateUsername(form.userName.value)
                 fail += validatePassword1(form.password1.value)
                 fail += validatePassword2(form.password2.value)
 				fail += validateRole(form.role.value)
@@ -29,7 +29,7 @@ include 'header.php'
 	</head>
 	
 	<body> 
-		<table class="user.php" border="0" cellpadding="2" cellspacing="5" bgcolor="#eeeeee">
+		<table class="register.php" border="0" cellpadding="2" cellspacing="5" bgcolor="#eeeeee">
 			<th colspan="2" align="center"> SIGNUP</th>
 			<form method="post" action="user-add.php" onsubmit="return validate(this)">
 				<tr><td>Your First Name</td>

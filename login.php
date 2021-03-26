@@ -22,7 +22,6 @@ echo <<<_END
                 </p>
                 <p class="submit">
                     <input type="submit" name="commit" value="login">
-
                 </p>
             </form>
         </div>

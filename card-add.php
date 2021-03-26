@@ -26,7 +26,7 @@ if(isset($_POST['cardName'])) {
     $cardValue = $_POST['cardValue'];
     $points = $_POST['points'];
 
-    $query = "INSERT into giftcard (cardName, cardType, cardValue, points) values ('$cardName', '$cardType', $cardValue, $points)";
+    $query = "insert into giftcard (cardName, cardType, cardValue, points) values ('$cardName', '$cardType', $cardValue, $points)";
 
     $conn->query($query);
     if(!result) die ($conn->error);

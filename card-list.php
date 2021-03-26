@@ -7,7 +7,7 @@ include 'database.php';
 $conn = new mysqli ($hn, $un, $pw, $db);
 if($conn->connect_error) die($conn->connect_error);
 
-$query = "SELECT * from giftcard";
+$query = "select * from giftcard";
 
 $result = $conn->query($query);
 if(!$result) die ($conn->error);
