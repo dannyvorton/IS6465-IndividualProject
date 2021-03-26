@@ -5,7 +5,7 @@ include 'account-navbar.php';
 include 'database.php';
 
 echo <<<_END
-        <form method='post' action='card-add.php'>
+        <form method='post' action='card-add-admin.php'>
             <pre>
                 Card Name: <input type='text' name='cardName'>
                 Card Type: <input type='text' name='cardType'>
@@ -30,7 +30,7 @@ if(isset($_POST['cardName'])) {
 
     $conn->query($query);
     if(!result) die ($conn->error);
-    header("Location: card-add.php");
+    header("Location: card-add-admin.php");
 }
 
 $conn->close();
