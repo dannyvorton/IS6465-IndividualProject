@@ -29,33 +29,20 @@ echo <<<_END
     Points: $row[points]
 </pre>
 
-<form method='post' action='card-update-admin.php'>
-<pre>
-    Card Name: <input type='text' name='cardName'>
-    Card Type: <input type='text' name='cardType'>
-    Card Value: <input type='decimal' name='cardValue'>
-    Points: <input type='decimal' name='points'>
-    <input type='submit' value='Add Record'>
-</pre>
-</form>
-
 _END;
 }
 
-if(isset($_POST['cardName'])) {
-    //    $cardId = $_POST['cardId'];
-        $cardName = $_POST['cardName'];
-        $cardType = $_POST['cardType'];
-        $cardValue = $_POST['cardValue'];
-        $points = $_POST['points'];
-    
-        $query = "insert into giftcard (cardName, cardType, cardValue, points) values ('$cardName', '$cardType', $cardValue, $points)";
-    
-        $conn->query($query);
-        if(!result) die ($conn->error);
-        header("Location: card-add-admin.php");
-    }
-    
-    $conn->close();
+echo <<<_END
+        <form method='post' action='card-update-admin.php'>
+            <pre>
+                Card Name: <input type='text' name='cardName' value=$row[cardName]>
+                Card Type: <input type='text' name='cardType' value=$row[cardType]>
+                Card Value: <input type='decimal' name='cardValue' value=$row[cardValue]>
+                Points: <input type='decimal' name='points' value=$row[points]>
+                <input type='submit' value='Update Record'>
+            </pre>
+        </form>
+_END;
+
 
 ?>
