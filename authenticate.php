@@ -6,7 +6,7 @@ include 'database.php';
 $conn = new mysqli($hn, $un, $pw, $db);
 if($conn->connect_error) die($conn->connect_error);
 
-if(isset($_POST['username']) && isset($_POST['password'])) {
+if(isset($_POST['userName']) && isset($_POST['password'])) {
 // Get values from login screen
     $tmp_username = mysql_entities_fix_string($conn, $_POST['userName']);
     $tmp_password = mysql_entities_fix_string($conn, $_POST['password']);
@@ -27,10 +27,11 @@ if(isset($_POST['username']) && isset($_POST['password'])) {
 
     // compare passwords
     if(password_verify($tmp_password, $passwordFromDB)) {
-        echo "successful login<br>";
+//        echo "successful login<br>";
         session_start();
-        $_SESSION['username'] = $tmp_username;
-        echo "<a href='card-list.php'> Card List </a>";
+        $_SESSION['userName'] = $tmp_username;
+        header("Location: card-list.php");
+//        echo "<a href='card-list.php'> Card List </a>";
     } else {
         echo "login error<br>";
     }
