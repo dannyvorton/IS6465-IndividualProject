@@ -28,7 +28,7 @@ echo <<<_END
         <div class="login_help">
             <p>
                 New User?
-                <a href="user.php">Click Here to Register</a>
+                <a href="register.php">Click Here to Register</a>
             </p>
         </div>
     </body>

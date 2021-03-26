@@ -17,7 +17,7 @@ if(isset($_POST['userName'])) {
 
     $conn->query($query);
     if(!result) die ($conn->error);
-    header("Location: login.php");
+    header("Location: user-add.php");
 }
 
 echo <<<_END
