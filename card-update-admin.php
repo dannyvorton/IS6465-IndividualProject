@@ -29,7 +29,7 @@ echo <<<_END
     Points: $row[points]
 </pre>
 
-<form method='post' action='card-add-admin.php'>
+<form method='post' action='card-update-admin.php'>
 <pre>
     Card Name: <input type='text' name='cardName'>
     Card Type: <input type='text' name='cardType'>
