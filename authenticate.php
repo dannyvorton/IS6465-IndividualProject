@@ -12,7 +12,7 @@ if(isset($_POST['userName']) && isset($_POST['password'])) {
     $tmp_password = mysql_entities_fix_string($conn, $_POST['password']);
 
     // get password from DB w/ SQL
-    $query = "select password from users where username = '$tmp_username'";
+    $query = "select * from users where username = '$tmp_username'";
 
     $result = $conn->query($query);
     if(!$result) die($conn->error);
@@ -23,22 +23,27 @@ if(isset($_POST['userName']) && isset($_POST['password'])) {
         $result->data_seek($j);
         $row = $result->fetch_array(MYSQLI_ASSOC);
         $passwordFromDB = $row['password'];
+        $role = $row['role'];
+		$username = $row['userName'];
     }
 
     // compare passwords
     if(password_verify($tmp_password, $passwordFromDB)) {
-//        echo "successful login<br>";
-        session_start();
-        $_SESSION['userName'] = $tmp_username;
-        header("Location: card-list.php");
-//        echo "<a href='card-list.php'> Card List </a>";
-    } else {
-        echo "login error<br>";
+        echo "successful login<br>";
+        $user = new User($tmp_username);
+        if($role == "admin") {
+            session_start();
+            $_SESSION['admin'] = $user;
+            header("Location: card-list-user.php");
+        } elseif($role == "user") {
+            session_start();
+            $_SESSION['user'] = $user;
+            header("Location: card-list-admin.php");
+        } else {
+            echo "login error<br>";
+        }
     }
-
-}
-
-$conn->close();
+    $conn->close();
 
 // sanitization functions
 function mysql_entities_fix_string($conn, $string) {
