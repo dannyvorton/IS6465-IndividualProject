@@ -1,11 +1,14 @@
-include
+<?php
+
+include 'header.php';
+include 'database.php';
 
 $conn = new mysqli($hn, $un, $pw, $db);
 if($conn->connect_error) die($conn->connect_error);
 
 if(isset($_POST['username']) && isset($_POST['password'])) {
 // Get values from login screen
-    $tmp_username = mysql_entities_fix_string($conn, $_POST['username']);
+    $tmp_username = mysql_entities_fix_string($conn, $_POST['userName']);
     $tmp_password = mysql_entities_fix_string($conn, $_POST['password']);
 
     // get password from DB w/ SQL
@@ -27,7 +30,7 @@ if(isset($_POST['username']) && isset($_POST['password'])) {
         echo "successful login<br>";
         session_start();
         $_SESSION['username'] = $tmp_username;
-        echo "<a href='continue.php'> Continue </a>";
+        echo "<a href='card-list.php'> Card List </a>";
     } else {
         echo "login error<br>";
     }

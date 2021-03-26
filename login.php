@@ -7,7 +7,7 @@ echo <<<_END
 <main>
 <div class="login">
             <h1>Login to Air Asia</h1>
-            <form method="post" action="card-list.php">
+            <form method="post" action="authenticate.php">
                 <p>
                     <input type="text" name="login" value="" placeholder="Username or Email">
                 </p>
