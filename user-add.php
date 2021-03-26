@@ -10,9 +10,10 @@ if(isset($_POST['userName'])) {
     $lastName = $_POST['lastName'];
     $email = $_POST['email'];
     $userName = $_POST['userName'];
+    $role = $_POST['role'];
     $password = password_hash($password, PASSWORD_DEFAULT);
 
-    $query = "INSERT into users (firstName, lastName, email, userName, password) values ('$firstName', '$lastName', '$email', '$userName', '$password')";
+    $query = "insert into users (firstName, lastName, email, userName, password, role) values ('$firstName', '$lastName', '$email', '$userName', '$password', '$role')";
 
     $conn->query($query);
     if(!result) die ($conn->error);

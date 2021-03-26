@@ -7,7 +7,7 @@ echo <<<_END
 <main>
 <div class="login">
             <h1>Login to Air Asia</h1>
-            <form method="post" action="">
+            <form method="post" action="card-list.php">
                 <p>
                     <input type="text" name="login" value="" placeholder="Username or Email">
                 </p>
@@ -62,7 +62,25 @@ if(isset($_POST['userName']) && isset($_POST['password'])) {
     // compare passwords
     if(password_verify($tmp_password, $passwordFromDB)) {
         echo "successful login<br>";
+        
+        $conn = new mysqli ($hn, $un, $pw, $db);
+        if($conn->connect_error) die($conn->connect_error);
+
+ //       if (isset($_GET['cardId'])) {
+
+//        $cardId = $_GET['cardId'];
+
+        $query = "select role from users where userName=$tmp_username";
+
+        $result = $conn->query($query);
+        if(!$result) die ($conn->error);
+
+        $rows = $result->num_rows;
+
+        $row = $result->fetch_array(MYSQLI_ASSOC);
+        $role = $row['role'];
         session_start();
+        $_SESSION['role'] = $role;
         $_SESSION['userName'] = $tmp_username;
         echo "<a href='continue.php'> Continue </a>";
     } else {
