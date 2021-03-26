@@ -31,11 +31,11 @@ if(isset($_POST['userName']) && isset($_POST['password'])) {
     if(password_verify($tmp_password, $passwordFromDB)) {
         echo "successful login<br>";
         $user = new User($tmp_username);
-        if($role == "admin") {
+        if($role == 'admin') {
             session_start();
             $_SESSION['user'] = $user;
             header("Location: card-list-admin.php");
-        } elseif($role == "user") {
+        } elseif($role == 'user') {
             session_start();
             $_SESSION['user'] = $user;
             header("Location: card-list-user.php");

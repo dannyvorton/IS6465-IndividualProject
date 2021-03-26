@@ -4,6 +4,8 @@ include 'header.php';
 include 'account-navbar.php';
 include 'database.php';
 
+$page_roles = array('admin');
+
 $conn = new mysqli ($hn, $un, $pw, $db);
 if($conn->connect_error) die($conn->connect_error);
 
