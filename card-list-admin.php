@@ -4,7 +4,7 @@ include 'header.php';
 include 'account-navbar.php';
 include 'database.php';
 
-$page_roles = array('admin','user');
+$page_roles = array('admin');
 if(isset($_SESSION['person'])){
     $user = $_SESSION['person'];
     $username = $user->username;
