@@ -1,11 +1,11 @@
 create table users (
     userId int(11) unsigned auto_increment primary key,
-    firstName varchar(100) not null,
-    lastName varchar(100) not null,
-    email varchar(100) not null,
-    userName varchar(100) unique not null,
-    password varchar(100) not null,
-    role varchar(100) not null,
+    firstName varchar(128) not null,
+    lastName varchar(128) not null,
+    email varchar(128) not null,
+    userName varchar(128) unique not null,
+    password varchar(128) not null,
+    role varchar(128) not null,
     points int
 )
 ENGINE MyISAM;
