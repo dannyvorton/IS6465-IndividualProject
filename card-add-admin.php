@@ -4,6 +4,22 @@ include 'header.php';
 include 'account-navbar.php';
 include 'database.php';
 
+$page_roles = array('admin','user');
+if(isset($_SESSION['person'])){
+    $user = $_SESSION['person'];
+    $username = $user->username;
+    $user_roles = $user->getRoles();
+    $found=0;
+    foreach($user_roles as $urole) {
+        foreach($page_roles as $prole) {
+            if($urole==$prole)$found=1;
+        }
+    }
+    if($found==1) {
+        echo "Welcome $username to the card admin page";
+    }
+}
+
 echo <<<_END
         <form method='post' action='card-add-admin.php'>
             <pre>
