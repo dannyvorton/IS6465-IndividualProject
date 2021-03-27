@@ -55,7 +55,7 @@ if (isset($_POST['userName']) && isset($_POST['password'])) {
 		
 //		echo "<a href='continue.php'> Continue </a>";
 
-		header("Location: card-list-admin.php");
+		header("Location: card-list.php");
 
 	}
 	else
