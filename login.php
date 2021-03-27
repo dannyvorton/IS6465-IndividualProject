@@ -6,12 +6,13 @@ include 'database.php';
 echo <<<_END
 <body>
 <form method='post' action='login.php'>
-    Username: <input type='text' name='username'><br>
+    Username: <input type='text' name='userName'><br>
     Password: <input type='password' name='password'>
     <input type='submit' value='Login'>
     <br>
     New User?
         <a href="register.php">Click Here to Register</a>
+    <br>
 </form>
 </body>
 </html>
@@ -50,7 +51,7 @@ if (isset($_POST['userName']) && isset($_POST['password'])) {
 		$user = new User($user);
 
 		session_start();
-		$_SESSION['user'] = $user;
+		$_SESSION['userName'] = $user;
 		
 //		echo "<a href='continue.php'> Continue </a>";
 
