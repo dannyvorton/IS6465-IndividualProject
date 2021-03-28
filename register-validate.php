@@ -1,22 +1,22 @@
 <?php
 
 if (isset($_POST['username'])) {
-    $firstname = fix_string($_POST['firstName']);
-    $lastname = fix_string($_POST['lastName']);
+    $firstname = fix_string($_POST['first_name']);
+    $lastname = fix_string($_POST['last_name']);
     $email = fix_string($_POST['email']);
-    $username = fix_string($_POST['userName']);
+    $username = fix_string($_POST['username']);
     $password1 = fix_string($_POST['password1']);
     $password2 = fix_string($_POST['password2']);
     $role = fix_string($_POST['role']);
 
-    $fail = validate_firstname($firstname);
-    $fail = validate_lastname($lastname);
-    $fail = validate_email($email);
-    $fail = validate_username($username);
-    $fail = validate_password1($password1);
-    $fail = validate_password2($password2);
-    $fail = compare_password($password1, $password2);
-    $fail = validate_role($role);
+    $fail = validateFirstName($firstname);
+    $fail = validateLastName($lastname);
+    $fail = validateEmail($email);
+    $fail = validateUsername($username);
+    $fail = validatePassword1($password1);
+    $fail = validatePassword2($password2);
+    $fail = comparePasswords($password1, $password2);
+    $fail = validateRole($role);
 
     if ($fail == "") {
         echo "Form data validated successfully<br>";
@@ -25,36 +25,36 @@ if (isset($_POST['username'])) {
     }
 }
 
-function validate_firstname($string) {
+function validateFirstName($string) {
     return ($string=="") ? "No first name was entered <br>" : "";
 }
 
-function validate_lastname($string) {
+function validateLastName($string) {
     return ($string=="") ? "No last name was entered <br>" : "";
 }
 
-function validate_email($string) {
+function validateEmail($string) {
     return ($string == "") ? "No email was entered.\n" : "";
 }
 
-function validate_username($field) {
+function validateUsername($field) {
     return ($field=="") ? "No username was entered <br>" : "";
 }
 
-function validate_password1($string) {
+function validatePassword1($string) {
     return ($string == "") ? "No password1 was entered.\n" : "";
 }
 
-function validate_password2($string) {
+function validatePassword2($string) {
     return ($string == "") ? "No password2 was entered.\n" : "";
 }
 
-function compare_password($pass1, $pass2) {
+function comparePasswords($pass1, $pass2) {
     if($pass1==$pass2) return "";
     else return "Your passwords do not match.\n";
 }
 
-function validate_role($string) {
+function validateRole($string) {
     return ($string=="") ? "No role was entered.\n" : "";
 }
 
