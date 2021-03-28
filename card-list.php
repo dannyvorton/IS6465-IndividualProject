@@ -4,7 +4,7 @@ include 'header.php';
 include 'account-navbar.php';
 include 'database.php';
 
-$page_roles = array('admin');
+$page_roles = array('admin','user');
 if(isset($_SESSION['person'])){
     $user = $_SESSION['person'];
     $username = $user->username;
@@ -41,13 +41,6 @@ echo <<<_END
     Card Value: $row[cardValue]
     Points: $row[points]
 </pre>
-
-<form action='card-delete.php' method='post'>
-    <input type='hidden' name='delete' value='yes'>
-    <input type='hidden' name='cardId' value=$row[cardId]>
-    <input type='hidden' name='cardName' value='$row[cardName]'>
-    <input type='submit' value='DELETE RECORD'>
-</form>
 
 _END;
 
