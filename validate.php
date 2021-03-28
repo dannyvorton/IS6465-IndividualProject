@@ -15,8 +15,8 @@ if (isset($_POST['username'])) {
     $fail = validateUsername($username);
     $fail = validatePassword1($password1);
     $fail = validatePassword2($password2);
-    $fail = comparePasswords($password1, $password2);
     $fail = validateRole($role);
+    $fail = comparePasswords($password1, $password2);
 
     if ($fail == "") {
         echo "Form data validated successfully<br>";
@@ -25,12 +25,12 @@ if (isset($_POST['username'])) {
     }
 }
 
-function validateFirstName($string) {
-    return ($string=="") ? "No first name was entered <br>" : "";
+function validateFirstName($field) {
+    return ($field=="") ? "No firstname was entered <br>" : "";
 }
 
-function validateLastName($string) {
-    return ($string=="") ? "No last name was entered <br>" : "";
+function validateLastName($field) {
+    return ($field=="") ? "No lastname was entered <br>" : "";
 }
 
 function validateEmail($string) {
@@ -55,7 +55,7 @@ function comparePasswords($pass1, $pass2) {
 }
 
 function validateRole($string) {
-    return ($string=="") ? "No role was entered.\n" : "";
+    return ($string == "") ? "No role was entered.\n" : "";
 }
 
 //sanitization function

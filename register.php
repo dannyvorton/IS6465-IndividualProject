@@ -1,6 +1,8 @@
 <?php
 
-include 'header.php'
+include 'header.php';
+include 'validate.php';
+include 'validate.js';
 
 ?>
 
@@ -8,12 +10,12 @@ include 'header.php'
 <html> 
 	<head>
 		<title>An Example Form</title>
-        <script type='text/javascript' src='register-validate.js'></script>
+        <script type='text/javascript' src='validate.js'></script>
         <script>
             function validate(form) {
                 var 
-				fail = validateFirstName(form.firstname.value)
-				fail += validateLastName(form.lastname.value)
+				fail = validateFirstName(form.first_name.value)
+				fail += validateLastName(form.last_name.value)
 				fail += validateEmail(form.email.value)
 				fail += validateUsername(form.username.value)
                 fail += validatePassword1(form.password1.value)
