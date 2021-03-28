@@ -21,7 +21,7 @@ if(isset($_SESSION['person'])){
 }
 
 echo <<<_END
-        <form method='post' action='card-add-admin.php'>
+        <form method='post' action='card-add.php'>
             <pre>
                 Card Name: <input type='text' name='cardName'>
                 Card Type: <input type='text' name='cardType'>
@@ -46,7 +46,7 @@ if(isset($_POST['cardName'])) {
 
     $conn->query($query);
     if(!result) die ($conn->error);
-    header("Location: card-add-admin.php");
+    header("Location: card-add.php");
 }
 
 $conn->close();

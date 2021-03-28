@@ -31,7 +31,7 @@ if (isset($_POST['delete'])) {
     $result = $conn->query($query);
     if(!$result) die ($conn->error);
 
-    header("Location: card-list-admin.php");
+    header("Location: card-list.php");
 }
 
 $conn->close();

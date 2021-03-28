@@ -42,18 +42,11 @@ echo <<<_END
     Points: $row[points]
 </pre>
 
-<form action='card-delete-admin.php' method='post'>
+<form action='card-delete.php' method='post'>
     <input type='hidden' name='delete' value='yes'>
     <input type='hidden' name='cardId' value=$row[cardId]>
     <input type='hidden' name='cardName' value='$row[cardName]'>
     <input type='submit' value='DELETE RECORD'>
-</form>
-
-<form action='card-update-admin.php' method='post'>
-    <input type='hidden' name='update' value='yes'>
-    <input type='hidden' name='cardId' value=$row[cardId]>
-    <input type='hidden' name='cardName' value='$row[cardName]'>
-    <input type='submit' value='UPDATE RECORD'>
 </form>
 
 _END;
