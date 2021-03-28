@@ -18,7 +18,7 @@ include 'header.php';
 				fail += validateUsername(form.username.value)
                 fail += validatePassword1(form.password1.value)
                 fail += validatePassword2(form.password2.value)
-				fail += validate_role(form.role.value)
+				fail += validateRole(form.role.value)
                 if(form.password1.value!="")
                     fail += comparePasswords(form.password1.value, form.password2.value)
                 
