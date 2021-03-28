@@ -23,77 +23,34 @@ if(isset($_SESSION['person'])){
 $conn = new mysqli ($hn, $un, $pw, $db);
 if($conn->connect_error) die($conn->connect_error);
 
-if (isset($_GET['userName'])) {
-
-$isbn = $_GET['userName'];
-
-$query = "SELECT * from giftcard where userName=$username";
+$query = "select * from giftcard";
 
 $result = $conn->query($query);
 if(!$result) die ($conn->error);
 
 $rows = $result->num_rows;
 
-//for ($j=0; $j<$rows; ++$j) {
+for ($j=0; $j<$rows; ++$j) {
 //    $result->data_seek($j);
-//    $row = $result->fetch_array(MYSQLI_ASSOC);
-//    $available = $row['available'];
-//    $checked='';
-//    if($available==1) $checked='checked';
-
-//    $category = $row['category'];
-//    $A=$B=$C='';
-//    if($category=='Classic Fiction') $A = 'selected';
-//    if($category=='Non-Fiction') $B = 'selected';
-//    if($category=='Play') $C = 'selected';
-
-//    $genre = $row['genre'];
-//    $D=$E=$F='';
-//    if($genre=='action') $D = 'checked';
-//    if($genre=='classics') $E = 'checked';
-//    if($genre=='memoir') $F = 'checked';
-
-//    $imagepath = $row['imagepath'];
+    $row = $result->fetch_array(MYSQLI_ASSOC);
 
 echo <<<_END
-
-    <form action='card-update.php' method='post'>
-
 <pre>
-
-    Card Name: <input type='text' name='cardName' value='$row[cardName]'>
-    Card Type: <input type='text' name='cardType' value='$row[cardType]'>
-    Card Value: <input type='text' name='cardValue' value='$row[cardValue]'>
-    Points: <input type='text' name='points' value='$row[points]'>
-
+    Card Name: <a href='card-details.php?cardId=$row[cardId]'>$row[cardName]</a>
+    Card Type: $row[cardType]
+    Card Value: $row[cardValue]
+    Points: $row[points]
 </pre>
 
-        <input type='hidden' name='update' value='yes'>
-        <input type='hidden' name='cardName' value='$row[cardName]'>
-        <input type='submit' value='UPDATE RECORD'>
-    </form>
+<form action='card-delete.php' method='post'>
+    <input type='hidden' name='delete' value='yes'>
+    <input type='hidden' name='cardId' value=$row[cardId]>
+    <input type='hidden' name='cardName' value='$row[cardName]'>
+    <input type='submit' value='DELETE RECORD'>
+</form>
 
 _END;
-}
-//}
 
-if (isset($_POST['cardName'])) {
-    $cardname = $_POST['cardName'];
-    $cardtype = $_POST['cardType'];
-    $cardvalue = $_POST['cardValue'];
-    $points = $_POST['points'];
-
-    $available=0;
-    if(isset($_POST['available'])) $available=1;
-
-    $query = "UPDATE giftcard set cardName='$cardname', cardType='$cardtype', cardValue='$cardvalue', points='$points' where cardName=$cardname";
-
-    $result = $conn->query($query);
-    if(!$result) die ($conn->error);
-
-    header("Location: card-list.php");
 }
 
 $conn->close();
-
-?>
