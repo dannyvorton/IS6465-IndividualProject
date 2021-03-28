@@ -35,8 +35,7 @@ if (isset($_POST['userName']) && isset($_POST['password'])) {
 	
 	$rows = $result->num_rows;
 	$passwordFromDB="";
-	for($j=0; $j<$rows; $j++)
-	{
+	for($j=0; $j<$rows; $j++) {
 		$result->data_seek($j); 
 		$row = $result->fetch_array(MYSQLI_ASSOC);
 		$passwordFromDB = $row['password'];
@@ -51,7 +50,7 @@ if (isset($_POST['userName']) && isset($_POST['password'])) {
 		$user = new User($tmp_username);
 
 		session_start();
-		$_SESSION['userName'] = $user;
+		$_SESSION['user'] = $user;
 		
 //		echo "<a href='continue.php'> Continue </a>";
 

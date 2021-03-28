@@ -1,21 +1,29 @@
 <?php
 
+require_once 'user.php';
+
 session_start();
 
-if($_SESSION['userName']) {
-    $username = $_SESSION['userName'];
-
-    destroy_session_and_data();
-
-    echo "Welcome back $username <br>";
+if(!isset($_SESSION['user'])) {
+    header("Location: login.php");
+    exit();
 } else {
-    echo "Username is not in the session<br>";
-}
+    $user = $_SESSION['user'];
+    $username = $user->username;
+    $user_roles = $user->getRoles();
 
-function destroy_session_and_data() {
-    $_SESSION = array();
-    setcookie(session_name(), '', time() - 2592000, '/');
-    session_destroy();
+    $found = 0;
+    foreach ($user_roles as $urole) {
+        foreach ($page_roles as $prole) {
+            if ($urole==$prole) {
+                $found=1;  
+            }
+        }
+    }
+
+    if (!$found) {
+        header("Location: unathorized.php");
+    }
 }
 
 ?>
