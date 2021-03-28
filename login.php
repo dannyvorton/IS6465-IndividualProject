@@ -47,7 +47,7 @@ if (isset($_POST['userName']) && isset($_POST['password'])) {
 	{
 		echo "successful login<br>";
 
-		$user = new User($tmp_username);
+		$user = new User($username);
 
 		session_start();
 		$_SESSION['user'] = $user;

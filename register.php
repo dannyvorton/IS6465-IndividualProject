@@ -45,8 +45,8 @@ include 'header.php'
 			 	<tr><td>Please confirm your password</td>
 			 	<td><input type="password"  name="password2"></td></tr>
 				<tr><td>Your Role</td>
-				<td><input type="radio" name="role" value="user">User</td>
-				<td><input type="radio" name="role" value="admin">Admin</td></tr>
+				<td><input type="radio" name="role" value="cust">Customer</td>
+				<td><input type="radio" name="role" value="admin">Administrator</td></tr>
 			 <tr><td colspan="2" align="center"><input type="submit" value="SIGN UP"></td></tr>
 		    </form>
 		</table>

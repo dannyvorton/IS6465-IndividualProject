@@ -6,8 +6,8 @@ $page_roles = array('admin','user');
 
 session_start();
 
-if($_SESSION['person']) {
-    $user = $_SESSION['person'];
+if($_SESSION['user']) {
+    $user = $_SESSION['user'];
     $username = $user->username;
     $user_roles = $user->getRoles();
 
