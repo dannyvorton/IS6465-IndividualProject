@@ -12,13 +12,13 @@ include 'header.php'
         <script>
             function validate(form) {
                 var 
-				fail = validateFirstName(form.firstName.value)
-				fail += validateLastName(form.lastName.value)
+				fail = validateFirstName(form.firstname.value)
+				fail += validateLastName(form.lastname.value)
 				fail += validateEmail(form.email.value)
-				fail += validateUsername(form.userName.value)
+				fail += validateUsername(form.username.value)
                 fail += validatePassword1(form.password1.value)
                 fail += validatePassword2(form.password2.value)
-				fail += validateRole(form.role.value)
+				fail += validate_role(form.role.value)
                 if(form.password1.value!="")
                     fail += comparePasswords(form.password1.value, form.password2.value)
                 
@@ -33,13 +33,13 @@ include 'header.php'
 			<th colspan="2" align="center"> SIGNUP</th>
 			<form method="post" action="user-add.php" onsubmit="return validate(this)">
 				<tr><td>Your First Name</td>
-				<td><input type="text" name="firstName"></td></tr>
+				<td><input type="text" name="first_name"></td></tr>
 				<tr><td>Your Last Name</td>
-				<td><input type="text" name="lastName"></td></tr>
+				<td><input type="text" name="last_name"></td></tr>
 				<tr><td>Your email</td>
 			  	<td><input type="text" name="email"></td></tr>
 			 	<tr><td>Your username</td>
-			  	<td><input type="text" name="userName"></td></tr>
+			  	<td><input type="text" name="username"></td></tr>
 			 	<tr><td>Your password</td>
 			 	<td><input type="password" name="password1"></td></tr>
 			 	<tr><td>Please confirm your password</td>

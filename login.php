@@ -2,11 +2,12 @@
 
 include 'header.php';
 include 'database.php';
+include 'user.php';
 
 echo <<<_END
 <body>
 <form method='post' action='login.php'>
-    Username: <input type='text' name='userName'><br>
+    Username: <input type='text' name='username'><br>
     Password: <input type='password' name='password'>
     <input type='submit' value='Login'>
     <br>
@@ -21,14 +22,14 @@ _END;
 $conn = new mysqli($hn, $un, $pw, $db);
 if($conn->connect_error) die($conn->connect_error);
 
-if (isset($_POST['userName']) && isset($_POST['password'])) {
+if (isset($_POST['username']) && isset($_POST['password'])) {
 	
 	//Get values from login screen
-	$tmp_username = mysql_entities_fix_string($conn, $_POST['userName']);
+	$tmp_username = mysql_entities_fix_string($conn, $_POST['username']);
 	$tmp_password = mysql_entities_fix_string($conn, $_POST['password']);
 	
 	//get password from DB w/ SQL
-	$query = "SELECT password from users where userName = '$tmp_username'";
+	$query = "select password from users where username = '$tmp_username'";
 	
 	$result = $conn->query($query); 
 	if(!$result) die($conn->error);
@@ -47,10 +48,10 @@ if (isset($_POST['userName']) && isset($_POST['password'])) {
 	{
 		echo "successful login<br>";
 
-		$user = new User($username);
+		$user = new User($tmp_username);
 
 		session_start();
-		$_SESSION['user'] = $user;
+		$_SESSION['person'] = $user;
 		
 //		echo "<a href='continue.php'> Continue </a>";
 

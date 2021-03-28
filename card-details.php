@@ -1,33 +1,17 @@
 <?php
 
 include 'header.php';
-include 'account-navbar.php';
+include 'navbar.php';
 include 'database.php';
-
-$page_roles = array('admin','user');
-if(isset($_SESSION['person'])){
-    $user = $_SESSION['person'];
-    $username = $user->username;
-    $user_roles = $user->getRoles();
-    $found=0;
-    foreach($user_roles as $urole) {
-        foreach($page_roles as $prole) {
-            if($urole==$prole)$found=1;
-        }
-    }
-    if($found==1) {
-        echo "Welcome $username to the card admin page";
-    }
-}
 
 $conn = new mysqli ($hn, $un, $pw, $db);
 if($conn->connect_error) die($conn->connect_error);
 
-if (isset($_GET['cardId'])) {
+if (isset($_GET['card_id'])) {
 
-$cardId = $_GET['cardId'];
+$cardid = $_GET['card_id'];
 
-$query = "select * from giftcard where cardId=$cardId";
+$query = "select * from gift_card where card_id=$cardid";
 
 $result = $conn->query($query);
 if(!$result) die ($conn->error);
@@ -39,9 +23,9 @@ $row = $result->fetch_array(MYSQLI_ASSOC);
 echo <<<_END
 
 <pre>
-    Card Name: $row[cardName]
-    Card Type: $row[cardType]
-    Card Value: $row[cardValue]
+    Card Name: $row[card_name]
+    Card Type: $row[card_type]
+    Card Value: $row[card_value]
     Points: $row[points]
 </pre>
 

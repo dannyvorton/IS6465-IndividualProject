@@ -1,29 +1,13 @@
 <?php
 
 include 'header.php';
-include 'account-navbar.php';
+include 'navbar.php';
 include 'database.php';
-
-$page_roles = array('admin');
-if(isset($_SESSION['person'])){
-    $user = $_SESSION['person'];
-    $username = $user->username;
-    $user_roles = $user->getRoles();
-    $found=0;
-    foreach($user_roles as $urole) {
-        foreach($page_roles as $prole) {
-            if($urole==$prole)$found=1;
-        }
-    }
-    if($found==1) {
-        echo "Welcome $username to the card admin page";
-    }
-}
 
 $conn = new mysqli ($hn, $un, $pw, $db);
 if($conn->connect_error) die($conn->connect_error);
 
-$query = "select * from giftcard";
+$query = "select * from gift_card";
 
 $result = $conn->query($query);
 if(!$result) die ($conn->error);
@@ -36,17 +20,17 @@ for ($j=0; $j<$rows; ++$j) {
 
 echo <<<_END
 <pre>
-    Card Name: <a href='card-details.php?cardId=$row[cardId]'>$row[cardName]</a>
-    Card Type: $row[cardType]
-    Card Value: $row[cardValue]
+    Card Name: <a href='card-details.php?card_id=$row[card_id]'>$row[card_name]</a>
+    Card Type: $row[card_type]
+    Card Value: $row[card_value]
     Points: $row[points]
 </pre>
 
-<form action='card-delete.php' method='post'>
-    <input type='hidden' name='delete' value='yes'>
-    <input type='hidden' name='cardId' value=$row[cardId]>
-    <input type='hidden' name='cardName' value='$row[cardName]'>
-    <input type='submit' value='DELETE RECORD'>
+<form action='update-card.php?card_id=$row[card_id]'>
+    <input type='hidden' name='update' value='yes'>
+    <input type='hidden' name='card_id' value=$row[card_id]>
+    <input type='hidden' name='card_name' value='$row[card_name]'>
+    <input type='submit' value='UPDATE RECORD'>
 </form>
 
 _END;

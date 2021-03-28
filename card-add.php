@@ -1,31 +1,15 @@
 <?php
 
 include 'header.php';
-include 'account-navbar.php';
+include 'navbar.php';
 include 'database.php';
-
-$page_roles = array('admin');
-if(isset($_SESSION['person'])){
-    $user = $_SESSION['person'];
-    $username = $user->username;
-    $user_roles = $user->getRoles();
-    $found=0;
-    foreach($user_roles as $urole) {
-        foreach($page_roles as $prole) {
-            if($urole==$prole)$found=1;
-        }
-    }
-    if($found==1) {
-        echo "Welcome $username to the card admin page";
-    }
-}
 
 echo <<<_END
         <form method='post' action='card-add.php'>
             <pre>
-                Card Name: <input type='text' name='cardName'>
-                Card Type: <input type='text' name='cardType'>
-                Card Value: <input type='decimal' name='cardValue'>
+                Card Name: <input type='text' name='card_name'>
+                Card Type: <input type='text' name='card_type'>
+                Card Value: <input type='decimal' name='card_value'>
                 Points: <input type='decimal' name='points'>
                 <input type='submit' value='Add Record'>
             </pre>
@@ -35,14 +19,14 @@ _END;
 $conn = new mysqli ($hn, $un, $pw, $db);
 if($conn->connect_error) die($conn->connect_error);
 
-if(isset($_POST['cardName'])) {
+if(isset($_POST['card_name'])) {
 //    $cardId = $_POST['cardId'];
-    $cardName = $_POST['cardName'];
-    $cardType = $_POST['cardType'];
-    $cardValue = $_POST['cardValue'];
+    $cardname = $_POST['card_name'];
+    $cardtype = $_POST['card_type'];
+    $cardvalue = $_POST['card_value'];
     $points = $_POST['points'];
 
-    $query = "insert into giftcard (cardName, cardType, cardValue, points) values ('$cardName', '$cardType', $cardValue, $points)";
+    $query = "insert into gift_card (card_name, card_type, card_value, points) values ('$cardname', '$cardtype', $cardvalue, $points)";
 
     $conn->query($query);
     if(!result) die ($conn->error);
