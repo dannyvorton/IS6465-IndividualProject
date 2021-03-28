@@ -1,98 +1,97 @@
 <?php
 
-require_once 'login.php';
+include 'header.php';
+include 'account-navbar.php';
+include 'database.php';
+
+$page_roles = array('admin');
+if(isset($_SESSION['person'])){
+    $user = $_SESSION['person'];
+    $username = $user->username;
+    $user_roles = $user->getRoles();
+    $found=0;
+    foreach($user_roles as $urole) {
+        foreach($page_roles as $prole) {
+            if($urole==$prole)$found=1;
+        }
+    }
+    if($found==1) {
+        echo "Welcome $username to the card admin page";
+    }
+}
 
 $conn = new mysqli ($hn, $un, $pw, $db);
 if($conn->connect_error) die($conn->connect_error);
 
-if (isset($_GET['isbn'])) {
+if (isset($_GET['userName'])) {
 
-$isbn = $_GET['isbn'];
+$isbn = $_GET['userName'];
 
-$query = "SELECT * from classics2 where isbn=$isbn";
+$query = "SELECT * from giftcard where userName=$username";
 
 $result = $conn->query($query);
 if(!$result) die ($conn->error);
 
 $rows = $result->num_rows;
 
-for ($j=0; $j<$rows; ++$j) {
+//for ($j=0; $j<$rows; ++$j) {
 //    $result->data_seek($j);
-    $row = $result->fetch_array(MYSQLI_ASSOC);
-    $available = $row['available'];
-    $checked='';
-    if($available==1) $checked='checked';
+//    $row = $result->fetch_array(MYSQLI_ASSOC);
+//    $available = $row['available'];
+//    $checked='';
+//    if($available==1) $checked='checked';
 
-    $category = $row['category'];
-    $A=$B=$C='';
-    if($category=='Classic Fiction') $A = 'selected';
-    if($category=='Non-Fiction') $B = 'selected';
-    if($category=='Play') $C = 'selected';
+//    $category = $row['category'];
+//    $A=$B=$C='';
+//    if($category=='Classic Fiction') $A = 'selected';
+//    if($category=='Non-Fiction') $B = 'selected';
+//    if($category=='Play') $C = 'selected';
 
-    $genre = $row['genre'];
-    $D=$E=$F='';
-    if($genre=='action') $D = 'checked';
-    if($genre=='classics') $E = 'checked';
-    if($genre=='memoir') $F = 'checked';
+//    $genre = $row['genre'];
+//    $D=$E=$F='';
+//    if($genre=='action') $D = 'checked';
+//    if($genre=='classics') $E = 'checked';
+//    if($genre=='memoir') $F = 'checked';
 
-    $imagepath = $row['imagepath'];
+//    $imagepath = $row['imagepath'];
 
 echo <<<_END
 
-    <form action='updaterecord.php' method='post'>
+    <form action='card-update.php' method='post'>
 
 <pre>
 
-    <img src='$imagepath' width='200' height='300'>
-
-    Author: <input type='text' name='author' value='$row[author]'>
-    Title: <input type='text' name='title' value='$row[title]'>
-    Year: <input type='text' name='year' value='$row[year]'>
-    Available: Yes <input type='checkbox' name='available' $checked>
-    ISBN: $row[isbn]
-    Image Path: <input type='text' name='imagepath' value='$imagepath'>
-
-    Category:
-    <select name='category' id='category'>
-        <option value='Classic Fiction' $A>Classic Fiction</option>
-        <option value='Non-Fiction' $B>Non-Fiction</option>
-        <option value='Play' $C>Play</option>
-    </select>
-
-    <input type="radio" id="action" name="genre" value="action" $D>Action
-    <input type="radio" id="action" name="genre" value="classics" $E>Classics
-    <input type="radio" id="action" name="genre" value="memoir" $F>Memoir
+    Card Name: <input type='text' name='cardName' value='$row[cardName]'>
+    Card Type: <input type='text' name='cardType' value='$row[cardType]'>
+    Card Value: <input type='text' name='cardValue' value='$row[cardValue]'>
+    Points: <input type='text' name='points' value='$row[points]'>
 
 </pre>
 
         <input type='hidden' name='update' value='yes'>
-        <input type='hidden' name='isbn' value='$row[isbn]'>
+        <input type='hidden' name='cardName' value='$row[cardName]'>
         <input type='submit' value='UPDATE RECORD'>
     </form>
 
 _END;
 }
-}
+//}
 
-if (isset($_POST['update'])) {
-    $isbn = $_POST['isbn'];
-    $author = $_POST['author'];
-    $title = $_POST['title'];
-    $category = $_POST['category'];
-    $year = $_POST['year'];
+if (isset($_POST['cardName'])) {
+    $cardname = $_POST['cardName'];
+    $cardtype = $_POST['cardType'];
+    $cardvalue = $_POST['cardValue'];
+    $points = $_POST['points'];
 
     $available=0;
     if(isset($_POST['available'])) $available=1;
 
-    $genre = $_POST['genre'];
-    $imagepath = $_POST['imagepath'];
-
-    $query = "UPDATE classics2 set author='$author', title='$title', category='$category', year='$year', available=$available, genre='$genre', imagepath='$imagepath' where isbn=$isbn";
+    $query = "UPDATE giftcard set cardName='$cardname', cardType='$cardtype', cardValue='$cardvalue', points='$points' where cardName=$cardname";
 
     $result = $conn->query($query);
     if(!$result) die ($conn->error);
 
-    header("Location: viewrecord.php");
+    header("Location: card-list.php");
 }
 
 $conn->close();
