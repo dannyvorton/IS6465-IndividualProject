@@ -1,8 +1,6 @@
 <?php
 
 include 'header.php';
-include 'validate.php';
-include 'validate.js';
 
 ?>
 
