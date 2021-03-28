@@ -42,7 +42,7 @@ echo <<<_END
     Points: $row[points]
 </pre>
 
-<form action='card-delete.php' method='post'>
+<form action='delete-card.php' method='post'>
     <input type='hidden' name='delete' value='yes'>
     <input type='hidden' name='cardId' value=$row[cardId]>
     <input type='hidden' name='cardName' value='$row[cardName]'>
@@ -54,3 +54,6 @@ _END;
 }
 
 $conn->close();
+
+?>
+
