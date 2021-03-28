@@ -25,43 +25,43 @@ if (isset($_POST['username'])) {
     }
 }
 
-function validateFirstName($field) {
-    return ($field=="") ? "No firstname was entered <br>" : "";
-}
+//function validateFirstName($field) {
+//    return ($field=="") ? "No firstname was entered <br>" : "";
+//}
 
-function validateLastName($field) {
-    return ($field=="") ? "No lastname was entered <br>" : "";
-}
+//function validateLastName($field) {
+//    return ($field=="") ? "No lastname was entered <br>" : "";
+//}
 
-function validateEmail($string) {
-    return ($string == "") ? "No email was entered.\n" : "";
-}
+//function validateEmail($string) {
+//    return ($string == "") ? "No email was entered.\n" : "";
+//}
 
-function validateUsername($field) {
-    return ($field=="") ? "No username was entered <br>" : "";
-}
+//function validateUsername($field) {
+//    return ($field=="") ? "No username was entered <br>" : "";
+//}
 
-function validatePassword1($string) {
-    return ($string == "") ? "No password1 was entered.\n" : "";
-}
+//function validatePassword1($string) {
+//    return ($string == "") ? "No password1 was entered.\n" : "";
+//}
 
-function validatePassword2($string) {
-    return ($string == "") ? "No password2 was entered.\n" : "";
-}
+//function validatePassword2($string) {
+//    return ($string == "") ? "No password2 was entered.\n" : "";
+//}
 
-function comparePasswords($pass1, $pass2) {
-    if($pass1==$pass2) return "";
-    else return "Your passwords do not match.\n";
-}
+//function comparePasswords($pass1, $pass2) {
+//    if($pass1==$pass2) return "";
+//    else return "Your passwords do not match.\n";
+//}
 
-function validateRole($string) {
-    return ($string == "") ? "No role was entered.\n" : "";
-}
+//function validateRole($string) {
+//    return ($string == "") ? "No role was entered.\n" : "";
+//}
 
 //sanitization function
-function fix_string($string) {
-    if (get_magic_quotes_gpc()) $string = stripslashes($string);
-    return htmlentities($string);
-}
+//function fix_string($string) {
+//    if (get_magic_quotes_gpc()) $string = stripslashes($string);
+//    return htmlentities($string);
+//}
 
 ?>
