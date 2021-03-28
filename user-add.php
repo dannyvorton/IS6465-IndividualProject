@@ -5,6 +5,7 @@ include 'database.php';
 
 $conn = new mysqli ($hn, $un, $pw, $db);
 if($conn->connect_error) die($conn->connect_error);
+
 if(isset($_POST['userName'])) {
     $firstName = $_POST['firstName'];
     $lastName = $_POST['lastName'];
