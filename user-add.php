@@ -11,7 +11,8 @@ if(isset($_POST['username'])) {
     $lastname = $_POST['last_name'];
     $email = $_POST['email'];
     $username = $_POST['username'];
-    $password = password_hash($password, PASSWORD_DEFAULT);
+    $password1 = $_POST['password1'];
+    $password = password_hash($password1, PASSWORD_DEFAULT);
     $role = $_POST['role'];
 
     $query = "insert into users (first_name, last_name, email, username, password, role) values ('$firstname', '$lastname', '$email', '$username', '$password', '$role')";

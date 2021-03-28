@@ -19,7 +19,7 @@ function validatePassword1(field) {
 }
 
 function validatePassword2(field) {
-    return (field=="") ? "No password2 was entered.\n" : "";
+   return (field=="") ? "No password2 was entered.\n" : "";
 }
 
 function validateRole(field) {
